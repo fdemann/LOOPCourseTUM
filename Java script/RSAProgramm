@@ -1,0 +1,76 @@
+class RSA {
+    long n;
+    long p; //dies ist die erste Primzahl
+    long q; //dies ist die zweite Primzahl
+    long c;
+    long e;
+    long d;
+
+  RSA (long p1, long q1) {
+    p = p1;
+    q = q1;
+    n = p*q;
+    c = (p-1)*(q-1);
+    berechnePassendesE();
+    berechnePassendesD();
+  }
+
+	long ggT(long a, long b) {
+		while (b != 0) {
+			if (a > b) {
+				a = a - b;
+			}
+			else {
+				b = b - a;
+			}
+		}
+		return a;
+	}
+
+  void berechnePassendesE () {
+    e = 2;
+    while (e < n) {
+      if (ggT(e, c) == 1) {
+        e = e;
+        break;
+      } else {
+        e = e+1;
+        }
+      }
+    }
+
+	long potenzMitModulo(long basis, long exponent) {
+		long ergebnis = 1;
+		while (exponent > 0) {
+			ergebnis = (ergebnis * basis) % n;
+			exponent = exponent - 1;
+		}
+		return ergebnis;
+	}
+
+	long verschluesseln(long x) {
+		long PotenziertesX;
+    long ergebnis;
+    PotenziertesX = potenzMitModulo(x, e);
+    ergebnis = PotenziertesX % n;
+    return ergebnis;
+	}
+
+  void berechnePassendesD () {
+    d = 1;
+    while((d * e) % c != 1) {
+      d = d+1;
+    }
+    d = d;
+  }
+
+	long entschluesseln(long y) {
+		return potenzMitModulo(y, d) % n;
+	}
+
+	public static void main(String[] args) {
+		RSA r = new RSA(5, 7);
+		System.out.println(r.verschluesseln(10)); //Gibt 5 auf der Console aus.
+		System.out.println(r.entschluesseln(5));  //Gibt 10 auf der Console aus.
+	}
+}
