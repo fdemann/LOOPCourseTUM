@@ -5,32 +5,73 @@ class Buecherregal {
 
     // Fuegen Sie die neuen Methoden hier ein
     int kapazitaet() {
-        return regal.length + 1;
-    }
+       return regal.length;
+   }
 
-    int anzahlBuecher() {
-      int books = 0;
-      for (int i = 0; i < regal.length; i++) {
-        if (regal[i] != null) {
-          books = books + 1;
+   int anzahlBuecher() {
+       int numberBooks =0;
+       for(int i=0; i < regal.length; i++) {
+           if(regal[i] != null) {
+               numberBooks = numberBooks + 1;
+           }
+       }
+       return numberBooks;
+   }
+
+    void buchEinstellen(Buch b) {
+      if(kapazitaet() == anzahlBuecher()){
+        //neues array erstellen und rueberkopieren.
+        Buch[] grossesRegal = new Buch[regal.length + 1];
+        for (int y = 0; y < grossesRegal.length; y++) {
+          grossesRegal[y] = regal[y];
+          }
+        //regal vergroessern
+        Buch[] regal = new Buch[grossesRegal.length];
+          for (int z = 0; z < grossesRegal.length; z++) {
+            grossesRegal[z] = regal[z];
+          }
+        //buchEinstellen
+        for (int t = 0; t < regal.length; t++) {
+          if(regal[t] == null) {
+            regal[t] = b;
+            break;
+            }
+          }
+      } else {
+        for (int i = 0; i < regal.length; i++) {
+          if(regal[i] == null) {
+            regal[i] = b;
+            break;
+            }
         }
       }
-      return books;
     }
-    
-    void buchEinstellen(Buch buch) {
-      int temp;
-      for (int i = 0; i < regal.length; i++) {
-        if (regal[i] == null) {
-          temp = i;
-          regal[i] = buch;
-        }
-      }
-      //Test ob Buch wirklich eingestellt wurde
-      if (regal[temp] != buch) {
-          //muss neuen array erstellen und alte werte kopieren
-          private Buch[] speicher = new Buch[regal.length + 1]
 
+    Buch buchMitTitelFinden(String titel) {
+        int buchPos = 0;
+        for(int i=0; i < regal.length; i++) {
+           if (regal[i].titelAusgeben().equals(titel)) {
+             buchPos = i;
+             break;
+           }
+         }
+         return regal[buchPos];
+       }
+
+    void buchMitTitelEntfernen(String titel) {
+      int buchPos = 0;
+      for(int i=0; i < regal.length; i++) {
+       if (regal[i].titelAusgeben().equals(titel)) {
+         buchPos = i;
+         break;
+         }
+      }
+      for(int y=buchPos; y<regal.length - 1; y++) {
+        if(y+1 < regal.length) {
+          regal[y] = regal[y+1];
+        } else {
+          break;
+        }
       }
     }
 
@@ -49,5 +90,139 @@ class Buecherregal {
         //br.buchEinstellen(b5);
         //Buch b2 = br.buchMitTitelFinden("Ein Freund fuer Nanoka");
         //System.out.println(b2.autorAusgeben());
+    }
+}
+
+
+
+//just for safety
+
+void buchEinstellen(Buch b) {
+      if (kapaz)
+      for (int i = 0; i < regal.length; i++) {
+          if(regal[i] == null) {
+              regal[i] = b;
+              break;
+          }
+      }
+  }
+
+  class Buecherregal {
+    private Buch[] regal = new Buch[3];
+
+    // Fuegen das neue Attribut hier ein
+
+    // Fuegen Sie die neuen Methoden hier ein
+    int kapazitaet() {
+       return regal.length;
+   }
+
+   int anzahlBuecher() {
+       int numberBooks =0;
+       for(int i=0; i < regal.length; i++) {
+           if(regal[i] != null) {
+               numberBooks = numberBooks + 1;
+           }
+       }
+       return numberBooks;
+   }
+
+   boolean checkArraySize() {
+       if(kapazitaet() == anzahlBuecher()) {
+           return true;
+       } else {
+           return false;
+       }
+   }
+
+    void buchEinstellen(Buch b) {
+      if(regal.length == anzahlBuecher()){
+        //neues array erstellen und rueberkopieren.
+        Buch[] grossesRegal = new Buch[regal.length + 1];
+        for (int y = 0; y < regal.length; y++) {
+          grossesRegal[y] = regal[y];
+          }
+        //attribut regal neu zuweisen
+        regal = grossesRegal;
+        //regal vergroessern
+        //Buch[] regal = new Buch[grossesRegal.length];
+        //  for (int z = 0; z < grossesRegal.length; z++) {
+        //    regal[z] = grossesRegal[z];
+        //  }
+        //buchEinstellen
+        for (int t = 0; t < regal.length; t++) {
+          if(regal[t] == null) {
+            regal[t] = b;
+            break;
+            }
+          }
+      } else {
+        for (int i = 0; i < regal.length; i++) {
+          if(regal[i] == null) {
+            regal[i] = b;
+            break;
+            }
+        }
+      }
+    }
+
+    Buch buchMitTitelFinden(String titel) {
+        int buchPos = 0;
+      for(int i=0; i < regal.length; i++) {
+        if (regal[i].titelAusgeben().equals(titel)) {
+          buchPos = i;
+          break;
+        }
+      }
+      if (regal[buchPos].titelAusgeben().equals(titel)) {
+            return regal[buchPos];
+      } else {
+          return null;
+      }
+    }
+
+      void buchMitTitelEntfernen(String titel) {
+      int buchPos = 0;
+      for(int i=0; i < regal.length; i++) {
+       if (regal[i].titelAusgeben().equals(titel)) {
+         buchPos = i;
+         break;
+         }
+      }
+      for(int y=buchPos; y<regal.length - 1; y++) {
+        if(y+1 < regal.length) {
+          regal[y] = regal[y+1];
+        } else {
+          break;
+        }
+      }
+    }
+
+    public static void main(String[] args) {
+        Buecherregal br = new Buecherregal();
+        Buch b1 = new Buch("Ein Freund fuer Nanoka", "Saro Tekkotsu");
+        Buch b2 = new Buch("2 Freunde fuer 4 Pfoten", "Michael Ende");
+        Buch b3 = new Buch("Die 3 ???", "Robert Arthur");
+        Buch b4 = new Buch("TKKG", "Stefan Wolf");
+        Buch b5 = new Buch("Die 5 Freunde", "Enid Blyton");
+
+        System.out.println(br.kapazitaet());
+        System.out.println(br.anzahlBuecher());
+
+        br.buchEinstellen(b1);
+        br.buchEinstellen(b2);
+        System.out.println(br.checkArraySize());
+        br.buchEinstellen(b3);
+
+        System.out.println(br.checkArraySize());
+
+        br.buchEinstellen(b4);
+        br.buchEinstellen(b5);
+
+        System.out.println(br.kapazitaet());
+        System.out.println(br.anzahlBuecher());
+
+        //Buch b2 = br.buchMitTitelFinden("Ein Freund fuer Nanoka");
+        System.out.println(b2.autorAusgeben());
     }
 }
