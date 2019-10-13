@@ -1,26 +1,38 @@
 class Buecherregal {
-    private Buch[] regal;
+    private Buch[] regal = new Buch[5];
 
     // Fuegen das neue Attribut hier ein
-    Buecherregal = new regal[5];
-
 
     // Fuegen Sie die neuen Methoden hier ein
-    int kapazitaet () {
-      return Buecherregal.length + 1;
+    int kapazitaet() {
+        return regal.length + 1;
     }
 
     int anzahlBuecher() {
       int books = 0;
-      for (int i = 0; i < Buecherregal.length; i++) {
-        if (Buecherregal[i] != 0) {
+      for (int i = 0; i < regal.length; i++) {
+        if (regal[i] != null) {
           books = books + 1;
         }
       }
       return books;
     }
-
     
+    void buchEinstellen(Buch buch) {
+      int temp;
+      for (int i = 0; i < regal.length; i++) {
+        if (regal[i] == null) {
+          temp = i;
+          regal[i] = buch;
+        }
+      }
+      //Test ob Buch wirklich eingestellt wurde
+      if (regal[temp] != buch) {
+          //muss neuen array erstellen und alte werte kopieren
+          private Buch[] speicher = new Buch[regal.length + 1]
+
+      }
+    }
 
     public static void main(String[] args) {
         Buecherregal br = new Buecherregal();
