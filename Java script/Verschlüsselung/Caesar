@@ -1,0 +1,24 @@
+public class CaesarCode extends Verschluesselung {
+
+
+    public CaesarCode(){
+
+    }
+
+    public CaesarCode(int offset) {
+
+    }
+
+    public String verschluesseln(String s) {
+        return null;
+    }
+
+    public String entschluesseln(String s) {
+        return null;
+    }
+}
+
+
+// use static int	offsetByCodePoints​(char[] a, int start, int count, int index, int codePointOffset)	
+//Returns the index within the given char subarray that is offset from the given index by codePointOffset code points.
+//Java Character Class method
