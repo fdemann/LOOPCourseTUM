@@ -1,0 +1,59 @@
+public class MorseCode extends Verschluesselung {
+
+    String[][] schluesselTabelle = new String[][] {
+        {"A", ".-"}, {"B", "-..."}, {"C", "-.-."}, {"D", "-.."},
+        {"E", "."}, {"F", "..-."}, {"G", "--."}, {"H", "...."},
+        {"I", ".."}, {"J", ".---"}, {"K", "-.-"}, {"L", ".-.."},
+        {"M", "--"}, {"N", "-."}, {"O", "---"}, {"P", ".--."},
+        {"Q", "--.-"}, {"R", ".-."}, {"S", "..."}, {"T", "-"},
+        {"U", "..-"}, {"V", "...-"}, {"W", ".--"}, {"X", "-..-"},
+        {"Y", "-.--"}, {"Z", "--.."}, {"0", "-----"}, {"1", ".----"},
+        {"2", "..---"}, {"3", "...--"}, {"4", "....-"}, {"5", "....."},
+        {"6", "-...."}, {"7", "--..."}, {"8", "---.."}, {"9", "----."},
+        {"'", ".----."}, {":", "---..."}, {",", "--..--"}, {"_", "..--.-"},
+        {")", "-.--.-"}, {"?", "..--.."}, {";", "-.-.-. "},
+        {"/", "-..-."}, {"(", "-.--."}, {"=", "-...-"},
+        {"@", ".--.-."}, {"\"", ".-..-."}, {"+", ".-.-."},
+        {".", ".-.-.-"}, {"-", "-....-"}, {" ", "   "}
+    };
+
+    public String verschluesseln(String s) {
+        return null;
+    }
+
+    public String entschluesseln(String s) {
+        String ergebnis = null;
+        if(s!=null){
+            String[] woerter = s.split(" {5}");//bei 5 leerzeichen trennen
+            String[] buchstaben;
+            ergebnis="";
+            for (int i = 0; i < woerter.length; i++) {
+                buchstaben = woerter[i].split(" ");
+                //vervollstaendigen Sie hier diese Methode.
+                ergebnis = ergebnis + " ";
+            }
+        }
+
+        return ergebnis;
+    }
+
+    public String zeichenInMorseCodeUmwandeln(char zeichen){
+        String morsezeichen = "";
+        for (int j = 0; j < schluesselTabelle.length; j++) {
+            if(zeichen == schluesselTabelle[j][0].charAt(0)) {
+                morsezeichen = schluesselTabelle[j][1];
+            }
+        }
+        return morsezeichen;
+    }
+
+    public char morseCodeInZeichenUmwandeln(String morsecode){
+        char zeichen =' ';
+        for (int j = 0; j < schluesselTabelle.length; j++) {
+            if(morsecode.equals(schluesselTabelle[j][1])) {
+                zeichen = schluesselTabelle[j][0].charAt(0);
+            }
+        }
+        return zeichen;
+    }
+}

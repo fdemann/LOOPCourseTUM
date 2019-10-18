@@ -1,0 +1,15 @@
+public abstract class Verschluesselung {
+
+    public abstract String verschluesseln(String s);
+    public abstract String entschluesseln(String s);
+
+    public static void main(String[] args) {
+        MorseCode m = new MorseCode();
+        System.out.println(m.verschluesseln("Code. ... . test-test."));
+        System.out.println(m.entschluesseln(m.verschluesseln("Code. ... . test-test.")));
+
+        CaesarCode c = new CaesarCode(10);
+        System.out.println(c.verschluesseln("Code. ... . test-test."));
+        System.out.println(c.entschluesseln(c.verschluesseln("Code. ... . test-test.")));
+    }
+}
