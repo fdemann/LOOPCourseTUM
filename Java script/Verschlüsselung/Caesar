@@ -1,24 +1,55 @@
 public class CaesarCode extends Verschluesselung {
 
+    protected int offset;
+
 
     public CaesarCode(){
-
+        offset = 1;
     }
 
     public CaesarCode(int offset) {
-
+        offset = offset;
     }
 
     public String verschluesseln(String s) {
-        return null;
+        String result;
+        char [] text = s.toCharArray();
+        for (int i = 0; i < text.length; i++) {
+            if(Character.isLetter(text[i])) {
+                text[i] += offset;
+            }
+        }
+        result = new String(text);
+        return result;
     }
 
     public String entschluesseln(String s) {
-        return null;
+        String result;
+        char [] text = s.toCharArray();
+        for (int i = 0; i < text.length; i++) {
+          if(Character.isLetter(text[i])) {
+              text[i] -= offset;
+          }
+        }
+        result = new String(text);
+        return result;
     }
 }
 
 
-// use static int	offsetByCodePoints​(char[] a, int start, int count, int index, int codePointOffset)	
+// use static int	offsetByCodePoints​(char[] a, int start, int count, int index, int codePointOffset)
 //Returns the index within the given char subarray that is offset from the given index by codePointOffset code points.
 //Java Character Class method
+
+
+String	replace​(char oldChar, char newChar)
+Returns a string resulting from replacing all occurrences of oldChar in this string with newChar.
+
+char[]	toCharArray​()
+Converts this string to a new character array.
+
+static boolean	isLowerCase​(char ch)
+Determines if the specified character is a lowercase character.
+
+String	toString​()
+Returns a String object representing this Character's value.
