@@ -14,16 +14,19 @@ public class MorseCode extends Verschluesselung {
         {")", "-.--.-"}, {"?", "..--.."}, {";", "-.-.-. "},
         {"/", "-..-."}, {"(", "-.--."}, {"=", "-...-"},
         {"@", ".--.-."}, {"\"", ".-..-."}, {"+", ".-.-."},
-        {".", ".-.-.-"}, {"-", "-....-"}, {" ", "   "}
+        {".", ".-.-.-"}, {"-", "-....-"}, {" ", "    "}
     };
 
     public String verschluesseln(String s) {
         String ergebnis;
+        s = s.toUpperCase();
         char [] text = s.toCharArray();
         char [] zwischenErgebnis = new char [text.length];
         for (int i=0; i < text.length; i++) {
             return zeichenInMorseCodeUmwandeln(text[i]);
+            ergebnis = ergebnis + zeichenInMorseCodeUmwandeln(text[i]) + " ";
         }
+        return ergebnis;
     }
 
     public String entschluesseln(String s) {
@@ -62,3 +65,8 @@ public class MorseCode extends Verschluesselung {
         return zeichen;
     }
 }
+
+
+-----.-.....
+
+-- --- .-. ... .
