@@ -7,8 +7,8 @@ public class CaesarCode extends Verschluesselung {
         offset = 1;
     }
 
-    public CaesarCode(int offset) {
-        offset = offset;
+    public CaesarCode(int o) {
+        offset = o;
     }
 
     public String verschluesseln(String s) {

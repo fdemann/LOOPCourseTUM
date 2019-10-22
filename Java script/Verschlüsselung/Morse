@@ -18,12 +18,11 @@ public class MorseCode extends Verschluesselung {
     };
 
     public String verschluesseln(String s) {
-        String ergebnis;
+        String ergebnis = "";
         s = s.toUpperCase();
         char [] text = s.toCharArray();
-        char [] zwischenErgebnis = new char [text.length];
+        //char [] zwischenErgebnis = new char [text.length];
         for (int i=0; i < text.length; i++) {
-            return zeichenInMorseCodeUmwandeln(text[i]);
             ergebnis = ergebnis + zeichenInMorseCodeUmwandeln(text[i]) + " ";
         }
         return ergebnis;
@@ -33,15 +32,21 @@ public class MorseCode extends Verschluesselung {
         String ergebnis = null;
         if(s!=null){
             String[] woerter = s.split(" {5}");//bei 5 leerzeichen trennen
+            //for (int x = 0; x < woerter.length; x++) {
+            //    System.out.println(woerter[x]);
+            //}
+            //System.out.println("\n");
             String[] buchstaben;
             ergebnis="";
             for (int i = 0; i < woerter.length; i++) {
                 buchstaben = woerter[i].split(" ");
-                //vervollstaendigen Sie hier diese Methode.
-                ergebnis = ergebnis + " ";
+                for (int y = 0; y < buchstaben.length; y++) {
+                    //System.out.println(buchstaben[y]);
+                    ergebnis = ergebnis + morseCodeInZeichenUmwandeln(buchstaben[y]);
+                }
+                //System.out.println("\n");
             }
         }
-
         return ergebnis;
     }
 
@@ -67,6 +72,52 @@ public class MorseCode extends Verschluesselung {
 }
 
 
------.-.....
+//Backup
+public String entschluesseln(String s) {
+    String ergebnis = null;
+    if(s!=null){
+        String[] woerter = s.split(" {5}");//bei 5 leerzeichen trennen
+        for (int x = 0; x < woerter.length; x++) {
+        System.out.println(woerter[x]);
+        }
+        System.out.println("\n");
+        String[] buchstaben;
+        ergebnis="";
+        for (int i = 0; i < woerter.length; i++) {
+            buchstaben = woerter[i].split(" ");
+            //vervollstaendigen Sie hier diese Methode.
+            for (int y = 0; y < buchstaben.length; y++) {
+                System.out.println(buchstaben[i]);
+                ergebnis = ergebnis + morseCodeInZeichenUmwandeln(buchstaben[i] + " ");
+            }
+        }
+    }
+    //System.out.println(buchstaben);
+    return ergebnis;
+}
 
--- --- .-. ... .
+//backup 2
+public String entschluesseln(String s) {
+    String ergebnis = null;
+    if(s!=null){
+        String[] woerter = s.split(" {5}");//bei 5 leerzeichen trennen
+        for (int x = 0; x < woerter.length; x++) {
+        System.out.println(woerter[x]);
+        }
+        System.out.println("\n");
+        String[] buchstaben;
+        ergebnis="";
+        for (int i = 0; i < woerter.length; i++) {
+            buchstaben = woerter[i].split(" ");
+            //vervollstaendigen Sie hier diese Methode.
+            if (i == buchstaben.length || i > buchstaben.length) {
+                break;
+            } else {
+            System.out.println(buchstaben[i]);
+            ergebnis = ergebnis + morseCodeInZeichenUmwandeln(buchstaben[i]);
+            }
+        }
+    }
+    //System.out.println(buchstaben);
+    return ergebnis;
+}
